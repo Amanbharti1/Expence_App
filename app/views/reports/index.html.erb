@@ -1,0 +1,9 @@
+<div class="container">
+<h1>Expense Reports</h1>
+
+<h2>Expenses by Day</h2>
+<%= column_chart current_user.expenses.group_by_day_of_week(:created_at, format: "%a").count %>
+
+<h2>Expenses by Month</h2>
+<%= line_chart current_user.expenses.group_by_month(:date, last: 6, current: true).sum('expenses.amount') %>
+</div>

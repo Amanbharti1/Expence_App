@@ -1,0 +1,14 @@
+<!-- app/views/user_mailer/welcome_email.html.erb -->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Welcome to My Awesome Site, <%= @user.email %>!</h1>
+    <p>
+      You have successfully signed up to my awesome site,
+      your username is: <%= @user.email %>.<br>
+      To login to the site, just follow this link: <%= link_to 'Login', new_user_session_url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

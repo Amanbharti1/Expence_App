@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+<center>
+<div class="card mb-3 mt-3" style="max-width: 600px;">
+<div class="row g-0">
+  <div class="col-md-4">
+  <% if @expense.receipt.attached? %>
+  <%= image_tag @expense.receipt, size: "200x200" %>
+<% else %>
+  No receipt uploaded.
+<% end %>
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+      <h4 class="card-title"><%=@expense.title%></h4>
+      <p class="card-text"> Description : <%=@expense.description%></p>
+      <p class="card-text"> $<%=@expense.amount%></p>
+      <p class="card-text"><small class="text-muted"><%=@expense.date%></small></p>
+    </div>
+  </div>
+</div>
+</div>
+  
+  
+
+<div class="mb-3">
+  <%= link_to "Edit this expense", edit_expense_path(@expense) ,class:"btn btn-primary mb-3" %> 
+  <%= link_to "Back to expenses", expenses_path ,class:"btn btn-warning mb-3" %>
+
+  <%= button_to "Destroy this expense", @expense, method: :delete ,class:"btn btn-danger" %>
+</div>
+
+<p>
+  <strong>Receipt:</strong>
+  <% if @expense.receipt.attached? %>
+    <%= image_tag @expense.receipt, size: "200x200" %>
+  <% else %>
+    No receipt uploaded.
+  <% end %>
+</p>
+</center>
+</div>

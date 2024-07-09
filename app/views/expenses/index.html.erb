@@ -1,0 +1,40 @@
+
+<div class="container">
+
+<%= link_to "New expense", new_expense_path ,class:"btn btn-secondary mb-5" %>
+
+<div class="btn-group mb-5" role="group" aria-label="Basic mixed styles example">
+  <%= link_to "All", expenses_path, class: "btn btn-danger", remote: true %>
+  <%= link_to "Repairs", category_expenses_path(2), class: "btn btn-warning", remote: true %>
+  <%= link_to "Shopping", category_expenses_path(1), class: "btn btn-success", remote: true %>
+  <%= link_to "Bills", category_expenses_path(3), class: "btn btn-info", remote: true %>
+  <%= link_to "Taxes", category_expenses_path(4), class: "btn btn-primary", remote: true %>
+</div>
+
+ <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+ <% sum = 0%>
+ <% @expenses.each do |e| %>
+ <% sum+=e.amount %>
+ <% end %>
+
+ <h3>Total: $<%=sum%></h3>
+</div>
+
+
+
+<div id="expenses" class="row">
+  <% if !@expenses.blank?%>
+  <%= render @expenses %>
+  <% else %>
+  <h1>NO EXPENCES AVAILABLE</h1>
+  <% end%>
+</div>
+
+<div class="pagination">
+  <ul class="pagination">
+  <li class:"page-item"><%= paginate @expenses%></li>
+  </ul>
+</div>
+
+
+</div>

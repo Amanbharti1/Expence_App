@@ -1,0 +1,57 @@
+<div class="container">
+<div class="row">
+<div class="col-12 d-flex justify-content-center">
+<div class="card w-25">
+<div class="card-body">
+<%= form_with(model: expense) do |form| %>
+  <% if expense.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+        <% expense.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    
+    <%= form.text_field :title ,{ class:"form-control",placeholder:"Title"} %>
+  </div>
+
+  <div class="mb-3">
+    
+    <%= form.text_field :amount ,{ class:"form-control",placeholder:"Amount"} %>
+  </div>
+
+  <div class="mb-3">
+    
+    <%= form.text_area :description,{ class:"form-control",placeholder:"Description"} %>
+  </div>
+
+  <div class="mb-3">
+    
+    <%= form.date_field :date , { class:"form-control",placeholder:"Date" } %>
+  </div>
+
+  <div class="field mb-3">
+  <%= form.label :category_id %>
+  <%= form.collection_select :category_id, Category.all, :id, :name, prompt: true %>
+</div>
+
+   <div class="field mb-3">
+   <%= form.label :receipt ,{class:"form-label "} %>
+   <%= form.file_field :receipt ,{ class:"form-control",placeholder:"Receipt"} %>
+   </div>
+  
+  <div class="mb-3">
+    <%= form.submit "Submit",class:"btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
